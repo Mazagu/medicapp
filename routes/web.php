@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Domain\Repositories\CimaRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/cima/{page?}', function ($page = 1) {
+    $drugs = (new CimaRepository())->all($page);
+    return view('cima.list', $drugs);
+})->middleware(['auth'])->name('cima.list');
 
 require __DIR__.'/auth.php';
