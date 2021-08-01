@@ -7,7 +7,7 @@
 		5 => "Medicamentos de estrecho margen terapéutico",
 	];
 @endphp
-<form class="w-full">
+<form class="w-full" action="{{route('cima.list')}}" method="GET">
 	@CSRF
   	<div class="flex flex-wrap -mx-3 mb-6">
     	<x-text-input :label="'Nombre'" :description="'Nombre del medicamento'" :input="'nombre'"></x-text-input>
@@ -15,7 +15,6 @@
     	<x-text-input :label="'CN'" :description="'Código Nacional'" :input="'cn'"></x-text-input>
     	<x-text-input :label="'ATC'" :description="'Código ATC o descripción'" :input="'atc'"></x-text-input>
     	<x-text-input :label="'Número de registro'" :description="'Número de registro'" :input="'nregistro'"></x-text-input>
-    	<x-text-input :label="'CN'" :description="'Código Nacional'" :input="'cn'"></x-text-input>
     	<x-text-input :label="'VMP'" :description="'ID del código VMP'" :input="'vmp'"></x-text-input>
     	<x-text-input :label="'Principios activos'" :description="'Nº de principios activos asociados al medicamento'" :input="'npactiv'"></x-text-input>
     	<x-text-input :label="'Principio activo'" :description="'Nombre del principio activo'" :input="'practiv1'"></x-text-input>
@@ -27,5 +26,9 @@
     	<x-select-input :label="'Biosimilar'" :description="'Biosimilar'" :input="'biosimilar'" :options="['No biosimilar', 'Biosimilar']"></x-select-input>
     	<x-select-input :label="'Comercializado'" :description="'Comercializado'" :input="'comerc'" :options="['No comercializado', 'Comercializado']"></x-select-input>
     	<x-select-input :label="'Sustituto'" :description="'Sustituto'" :input="'sust'" :options="$sustitutos"></x-select-input>
+  	</div>
+  	 <div class="w-full px-6 pt-4 pb-2 text-right">
+	    <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="buscar">
+	    </input>
   	</div>
 </form>

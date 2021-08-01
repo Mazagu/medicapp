@@ -5,9 +5,9 @@
 	</label>
 	<p class="text-xs italic">{{$description}}</p>
 	<select class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="{{$input}}">
-		<option>Seleccione</option>
+		<option value="">Seleccione</option>
 		@foreach($options as $key => $value)
-		<option value="{{$key}}">{{$value}}</option>
+		<option value="{{$key}}" {{old($input) === strval($key)?" selected":""}}>{{$value}}</option>
 		@endforeach
 	</select>
 </div>

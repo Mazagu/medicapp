@@ -1,5 +1,5 @@
 @props(['drug'])
-<div class="max-w-sm rounded overflow-hidden shadow-lg m-3 bg-blue-300 relative pb-16">
+<div class="max-w-md rounded overflow-hidden shadow-lg m-3 bg-blue-300 relative pb-16">
   @if(!empty($drug['fotos']))
     <div class="flex">
       @foreach($drug['fotos'] as $foto)

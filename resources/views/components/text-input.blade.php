@@ -4,5 +4,5 @@
 	{{$label}}
 	</label>
 	<p class="text-xs italic">{{$description}}</p>
-	<input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="{{$input}}">
+	<input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="{{$input}}" value="{{old($input)}}">
 </div>
