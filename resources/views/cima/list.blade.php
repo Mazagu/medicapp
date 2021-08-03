@@ -4,7 +4,11 @@
             {{ __('CIMA') }}
         </h2>
     </x-slot>
-
+    <div id="loader" class="bg-black bg-opacity-30 bottom-0 fixed left-0 right-0 top-0" style="z-index:10000">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
+            <img class="animate-spin h-5 w-5 mr-3" src="img/pill.svg" viewBox="0 0 24 24">
+        </div>
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         	<x-drug-search></x-drug-search>
@@ -37,4 +41,12 @@
             </div>
         </div>
     </div>
+    <div id="drug-modal-container"></div>
+    <script type="text/javascript">
+        var cima;
+        window.onload = () => {
+            cima = new cima();
+            document.querySelector("#loader").classList.add("hidden");
+        };
+    </script>
 </x-app-layout>

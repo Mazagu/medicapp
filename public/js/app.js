@@ -3802,6 +3802,22 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
+window.cima = function () {
+  return {
+    getDrug: function getDrug(id) {
+      document.querySelector("#loader").classList.remove("hidden");
+      fetch('cima/' + id).then(function (response) {
+        if (!response.ok) alert("Something went wrong: ".concat(response.status, " - ").concat(response.statusText));
+        return response.text();
+      }).then(function (response) {
+        document.querySelector("#drug-modal-container").innerHTML = response;
+      })["finally"](function () {
+        document.querySelector("#loader").classList.add("hidden");
+      });
+    }
+  };
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

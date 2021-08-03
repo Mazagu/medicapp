@@ -1,5 +1,5 @@
 @props(['drug'])
-<div class="max-w-md rounded overflow-hidden shadow-lg m-3 bg-blue-300 relative pb-16">
+<div x-data="{}" class="max-w-md rounded overflow-hidden shadow-lg m-3 bg-blue-300 relative pb-16">
   @if(!empty($drug['fotos']))
     <div class="flex">
       @foreach($drug['fotos'] as $foto)
@@ -42,8 +42,8 @@
     </ul>
   </div>
   <div class="w-full px-6 pt-4 pb-2 absolute bottom-0 text-right">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      Recetar
+    <button @click="cima.getDrug('{{$drug['nregistro']}}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Ver
     </button>
   </div>
 </div>

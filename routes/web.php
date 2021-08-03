@@ -53,4 +53,9 @@ Route::get('/cima', function (Request $request) {
     return view('cima.list', $drugs);
 })->middleware(['auth'])->name('cima.list');
 
+Route::get('/cima/{id}', function ($id) {
+    $drug = (new CimaRepository())->show($id);
+    return view('cima.show', $drug);
+})->middleware('auth')->name('cima.show');
+
 require __DIR__.'/auth.php';

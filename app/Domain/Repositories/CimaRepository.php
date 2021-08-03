@@ -27,12 +27,12 @@ class CimaRepository implements RepositoryInterface
 	}
 	public function filter(Array $filters) 
 	{
-		// dd($filters);
 		$response = Http::get('https://cima.aemps.es/cima/rest/medicamentos?'.http_build_query($filters));
 		return $response->json();
 	}
 	public function show(int $id) 
 	{
-		//
+		$response = Http::get('https://cima.aemps.es/cima/rest/medicamento?nregistro='.$id);
+		return $response->json();
 	}
 }
