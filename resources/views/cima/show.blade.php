@@ -45,7 +45,7 @@
 		@endforeach
 		</div>	
 	@endif
-	<ul class="flex">
+	<ul class="flex m-2">
 		@if($comerc)
 		<li title="Comercializado">
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,6 +107,27 @@
 por procedimiento centralizado">EMA</li>
 		@endif
 	</ul>
+	@if(!empty($presentaciones))
+		<div class="font-bold">Presentación:</div>
+		@foreach($presentaciones as $presentacion)
+		<div data-cn="{{$presentacion['cn']}}" class="text-sm border-2 p-1 m-1">
+			{{$presentacion['nombre']}}
+			@if($presentacion['psum'])
+			<span title="Problemas suministro" class="text-red-800">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+	  <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
+	  <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd" />
+	</svg>
+			</span>
+			@endif
+			@if($presentacion['comerc'] && isset($presentacion['estado']['aut']))
+			<button @click="cima.prescribe('{{$presentacion['cn']}}')" class="bg-green-500 hover:bg-green-700 text-white font-bold px-4 rounded">
+		      Recetar
+		    </button>
+			@endif
+		</div>
+		@endforeach
+	@endif
 	@if(!empty($nosustituible))
 		<div>Sustituible: <span data-id="{{$nosustituible['id']}}">{{$nosustituible['nombre']}}<span></div>
 	@endif	
@@ -121,6 +142,7 @@ por procedimiento centralizado">EMA</li>
 	</div>
 	@endif
 	@if(!empty($docs))
+	<div class="text-sm border-2 p-1 m-1">
 		<div class="font-bold">Documentos:</div>
 		@foreach($docs as $doc)
 		<div>
@@ -135,55 +157,43 @@ por procedimiento centralizado">EMA</li>
 		<div>{{Carbon\Carbon::createFromTimestamp($doc['fecha'])->format("d/m/Y")}}</div>	
 		@endif
 		@endforeach
+	</div>
 	@endif
 	@if(!empty($atcs))
+	<div class="text-sm border-2 p-1 m-1">
 		<div class="font-bold">Códigos ATC:</div>
 		@foreach($atcs as $atc)
 		<div data-nivel="{{$atc['nivel']}}">{{$atc['codigo']}} - {{$atc['nombre']}}</div>		
 		@endforeach
+	</div>
 	@endif	
 	@if(!empty($principiosActivos))
+	<div class="text-sm border-2 p-1 m-1">
 		<div class="font-bold">Principios activos:</div>
 		@foreach($principiosActivos as $principiosActivo)
 		<div data-order="{{$principiosActivo['orden']}}" data-id="{{$principiosActivo['id']}}">
 			{{$principiosActivo['codigo']}} - {{$principiosActivo['nombre']}} {{$principiosActivo['cantidad']}}{{$principiosActivo['unidad']}}
 		</div>		
 		@endforeach
+	</div>	
 	@endif	
 	@if(!empty($excipientes))
+	<div class="text-sm border-2 p-1 m-1">
 		<div class="font-bold">Excipientes:</div>
 		@foreach($excipientes as $excipiente)
 		<div data-order="{{$principiosActivo['orden']}}" data-id="{{$principiosActivo['id']}}">
 			{{$excipiente['nombre']}} {{$excipiente['cantidad']}}{{$excipiente['unidad']}}
 		</div>
 		@endforeach
+	</div>
 	@endif
 	@if(!empty($viasAdministracion))
+	<div class="text-sm border-2 p-1 m-1">
 		<div class="font-bold">Vía administración:</div>
 		@foreach($viasAdministracion as $viaAdministracion)
 		<div data-id="{{$viaAdministracion['id']}}">{{$viaAdministracion['nombre']}}</div>	
 		@endforeach
-	@endif
-	@if(!empty($presentaciones))
-		<div class="font-bold">Presentación:</div>
-		@foreach($presentaciones as $presentacion)
-		<div data-cn="{{$presentacion['cn']}}">
-			{{$presentacion['nombre']}}
-			@if($presentacion['psum'])
-			<span title="Problemas suministro" class="text-red-800">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-	  <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
-	  <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd" />
-	</svg>
-			</span>
-			@endif
-			@if($presentacion['comerc'] && isset($presentacion['estado']['aut']))
-			<button @click="cima.prescribe('{{$presentacion['cn']}}')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-		      Ver
-		    </button>
-			@endif
-		</div>
-		@endforeach
+	</div>
 	@endif
 	</div>	
 </div>

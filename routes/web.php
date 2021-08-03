@@ -48,6 +48,7 @@ Route::get('/cima', function (Request $request) {
         
         $drugs = (new CimaRepository())->filter($filters);
     } else {
+        $request->flush();
         $drugs = (new CimaRepository())->all();
     }
     return view('cima.list', $drugs);

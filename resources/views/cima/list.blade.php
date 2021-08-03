@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('CIMA') }}
         </h2>
+        Receta de medicamentos listados por la AEMPS
     </x-slot>
     <div id="loader" class="bg-black bg-opacity-30 bottom-0 fixed left-0 right-0 top-0" style="z-index:10000">
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">

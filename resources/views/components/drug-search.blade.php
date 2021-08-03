@@ -13,6 +13,8 @@
     	<x-text-input :label="'Nombre'" :description="'Nombre del medicamento'" :input="'nombre'"></x-text-input>
     	<x-text-input :label="'Laboratorio'" :description="'Nombre del laboratorio'" :input="'laboratorio'"></x-text-input>
     	<x-text-input :label="'CN'" :description="'Código Nacional'" :input="'cn'"></x-text-input>
+    </div>
+    <div id="advanced-search" class="flex flex-wrap -mx-3 mb-6 hidden">
     	<x-text-input :label="'ATC'" :description="'Código ATC o descripción'" :input="'atc'"></x-text-input>
     	<x-text-input :label="'Número de registro'" :description="'Número de registro'" :input="'nregistro'"></x-text-input>
     	<x-text-input :label="'VMP'" :description="'ID del código VMP'" :input="'vmp'"></x-text-input>
@@ -27,7 +29,11 @@
     	<x-select-input :label="'Comercializado'" :description="'Comercializado'" :input="'comerc'" :options="['No comercializado', 'Comercializado']"></x-select-input>
     	<x-select-input :label="'Sustituto'" :description="'Sustituto'" :input="'sust'" :options="$sustitutos"></x-select-input>
   	</div>
-  	 <div class="w-full px-6 pt-4 pb-2 text-right">
+  	<div>
+  		<a href="" onclick="document.querySelector('#advanced-search').classList.toggle('hidden'); return false;">Búsqueda avanzada</a>
+  	</div>
+  	<div class="w-full px-6 pt-4 pb-2 text-right">
+  		<a href="{{route('cima.list')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Limpiar</a>
 	    <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="buscar">
 	    </input>
   	</div>
